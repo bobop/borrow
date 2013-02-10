@@ -23,8 +23,6 @@ class Reminder < ActiveRecord::Base
       when '1y'
         self.reminder_date = Date.today.advance(years: 1)
     end
-    logger.info "--- Date.today = #{Date.today}"
-    logger.info "--- self.reminder_date = #{self.reminder_date}"
   end
 
 end
