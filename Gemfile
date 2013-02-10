@@ -5,7 +5,11 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
+gem 'jquery-rails'
+gem 'haml', '~> 3.1.7'
+gem 'haml-rails'
+gem 'formtastic'
 
 
 # Gems used only for assets and not required
@@ -18,9 +22,14 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'compass-rails'
+  gem 'zurb-foundation'
 end
 
-gem 'jquery-rails'
+group :development do
+  gem "better_errors"
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

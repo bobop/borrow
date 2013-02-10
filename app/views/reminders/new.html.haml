@@ -1,0 +1,20 @@
+%h1 Quick Reminder
+= semantic_form_for @reminder do |f|
+  .row
+    .six.columns
+      = f.input :from_name, :input_html => {class: 'twelve'}
+    .six.columns
+      = f.input :from_email, :input_html => {class: 'twelve'}
+  .row
+    .six.columns
+      = f.input :to_name, :input_html => {class: 'twelve'}
+    .six.columns
+      = f.input :to_email, :input_html => {class: 'twelve'}
+  .row
+    .six.columns
+      = f.input :item, :input_html => {class: 'twelve'}
+    .six.columns
+      = f.input :reminder_date, :as => :string, :input_html => {class: 'datepicker'}
+  .row
+    .twelve.columns
+      = f.input :message
