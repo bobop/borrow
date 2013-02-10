@@ -1,0 +1,11 @@
+Hi <%= @reminder.to_name %>
+
+Just a quick reminder that you borrowed my <%= @reminder.item %> recently and I'd like it back soon.
+
+<%= @reminder.message %>
+
+Ta, <%= @reminder.from_name %>
+
+---
+
+Sent via [borrow.io](http://borrow.io/ "borrow.io")

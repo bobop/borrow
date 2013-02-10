@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'haml', '~> 3.1.7'
 gem 'haml-rails'
 gem 'formtastic'
+gem "markerb", "~> 1.0.1"
+gem 'delayed_job_active_record'
 
 
 # Gems used only for assets and not required
@@ -29,6 +31,7 @@ end
 
 group :development do
   gem "better_errors"
+  gem 'quiet_assets'
 end
 
 # To use ActiveModel has_secure_password

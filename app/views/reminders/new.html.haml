@@ -1,20 +1,51 @@
-%h1 Quick Reminder
-= semantic_form_for @reminder do |f|
-  .row
-    .six.columns
-      = f.input :from_name, :input_html => {class: 'twelve'}
-    .six.columns
-      = f.input :from_email, :input_html => {class: 'twelve'}
-  .row
-    .six.columns
-      = f.input :to_name, :input_html => {class: 'twelve'}
-    .six.columns
-      = f.input :to_email, :input_html => {class: 'twelve'}
-  .row
-    .six.columns
-      = f.input :item, :input_html => {class: 'twelve'}
-    .six.columns
-      = f.input :reminder_date, :as => :string, :input_html => {class: 'datepicker'}
-  .row
-    .twelve.columns
-      = f.input :message
+.row
+  .six.columns
+    = semantic_form_for @reminder, html: {class: 'form'} do |f|
+      .row
+        .six.columns
+          = f.input :from_name, label: false, placeholder: 'Your Name', :input_html => {class: 'twelve'}
+        .six.columns
+          = f.input :from_email, label: false, placeholder: 'Your Email Address', :input_html => {class: 'twelve'}
+      .row
+        .six.columns
+          = f.input :to_name, label: false, placeholder: 'Your Friend\'s Name', :input_html => {class: 'twelve'}
+        .six.columns
+          = f.input :to_email, label: false, placeholder: 'Your Friend\'s Email Address', :input_html => {class: 'twelve'}
+      .row
+        .six.columns
+          = f.input :item, label: false, placeholder: 'The Borrowed Item', :input_html => {class: 'twelve'}
+          .clear
+          = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], '1m'), {}, {id: 'reminder_gap', class: 'twelve'}
+        .six.columns
+          = f.input :message, label: false, placeholder: 'Message For Friend', input_html: {rows: 3}
+      .row
+        .twelve.columns
+          = f.submit "Save Reminder", class: 'button'
+  .six.columns
+    .panel
+      %p 
+        From: 
+        %span.your_email [Your Email Address]
+        %br
+        To:
+        %span.their_email [Their  Email Address]
+        %br
+        Subject: A quick reminder about my
+        %span.the_item [Borrowed Item]
+        %br
+        Send:
+        %span.sent [In 1 month]
+      %hr
+      %p 
+        Hi
+        %span.their_name [Their Name]
+      %p 
+        Just a quick reminder that you borrowed my
+        %span.the_item [Thingy]
+        recently and I'd like it back soon.
+      %p
+        %span.message [Your Personal Message]
+      %p 
+        Ta,
+        %span.your_name [Your Name]
+      %p Sent via borrow.io

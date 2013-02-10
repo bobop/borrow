@@ -13,4 +13,10 @@
  *= require_tree .
  */
 
-#header { text-align: center; }
+#header {text-align: center;}
+
+.form li {list-style-type: none;}
+
+.panel span {font-weight: bold;}
+
+.right {text-align: right;}
