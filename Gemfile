@@ -11,8 +11,8 @@ gem 'haml', '~> 3.1.7'
 gem 'haml-rails'
 gem 'formtastic'
 gem "markerb", "~> 1.0.1"
-# gem 'delayed_job_active_record'
-gem 'hirefire'
+gem 'delayed_job_active_record'
+gem "workless", "~> 1.1.1"
 
 
 # Gems used only for assets and not required

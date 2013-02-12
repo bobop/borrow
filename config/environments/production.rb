@@ -65,6 +65,10 @@ Borrow::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  config.after_initialize do 
+    Delayed::Job.scaler = :heroku_cedar
+  end
+
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 25, # or 587
