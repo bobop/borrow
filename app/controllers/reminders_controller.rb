@@ -7,7 +7,6 @@ class RemindersController < ApplicationController
     @reminder = Reminder.new(params[:reminder])
     if @reminder.save
       redirect_to root_url, notice: 'Reminder stored to send later'
-      ReminderMailer.delay.reminder(@reminder)
     else
       render :new
     end
