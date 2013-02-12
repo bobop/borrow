@@ -11,7 +11,7 @@ gem 'haml', '~> 3.1.7'
 gem 'haml-rails'
 gem 'formtastic'
 gem "markerb", "~> 1.0.1"
-gem 'delayed_job_active_record'
+# gem 'delayed_job_active_record'
 gem 'hirefire'
 
 
