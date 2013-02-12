@@ -8,4 +8,4 @@ Ta, <%= @reminder.from_name %>
 
 ---
 
-Sent via [borrow.io](http://borrow.io/ "borrow.io")
+Sent via [www.borrownote.com](http://www.borrownote.com/ "www.borrownote.com")
