@@ -2,6 +2,10 @@ Borrow::Application.routes.draw do
   
   resources :reminders
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
   root :to => 'reminders#new'
 
   # The priority is based upon order of creation:

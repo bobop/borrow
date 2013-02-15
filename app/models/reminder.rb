@@ -4,7 +4,9 @@ class Reminder < ActiveRecord::Base
 
   before_create :format_reminder_date
 
-  validates :from_email, :from_name, :item, :message, :to_email, :to_name, :reminder_gap, :presence => true
+  validates :from_email, :from_name, :item, :to_name, :reminder_gap, :presence => true
+  validates :from_email, :email_format => {}
+  validates :to_email, :email_format => {:allow_blank => true}
 
   private
 

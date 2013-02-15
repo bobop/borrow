@@ -13,6 +13,8 @@ gem 'formtastic'
 gem "markerb", "~> 1.0.1"
 gem 'delayed_job_active_record'
 gem "workless", "~> 1.1.1"
+gem "mail_view", "~> 1.0.3"
+gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
 
 
 # Gems used only for assets and not required

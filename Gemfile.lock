@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/alexdunae/validates_email_format_of.git
+  revision: 46b832f7c778cc73f45ebc84cffba03c33294928
+  specs:
+    validates_email_format_of (1.5.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -80,6 +86,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_view (1.0.3)
+      tilt
     markerb (1.0.1)
       redcarpet (>= 2.0)
     mime-types (1.19)
@@ -166,11 +174,13 @@ DEPENDENCIES
   haml (~> 3.1.7)
   haml-rails
   jquery-rails
+  mail_view (~> 1.0.3)
   markerb (~> 1.0.1)
   pg
   quiet_assets
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  validates_email_format_of!
   workless (~> 1.1.1)
   zurb-foundation

@@ -10,7 +10,7 @@
   / Set the viewport width to device width for mobile
   %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
 
-  %title= content_for?(:title) ? yield(:title) : "Borrow"
+  %title= content_for?(:title) ? yield(:title) : "Borrow Note - Reminders to return your stuff"
 
   / Included CSS Files
   = stylesheet_link_tag "application"
@@ -28,6 +28,9 @@
         %small friendly reminders to give your stuff back!
     %hr
     #content.twelve_columns
+      -if flash[:notice]
+        .alert-box.success
+          = flash[:notice]
       = yield
     %hr
     #footer.row

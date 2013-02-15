@@ -1,51 +1,65 @@
 .row
   .six.columns
-    = semantic_form_for @reminder, html: {class: 'form'} do |f|
-      .row
-        .six.columns
-          = f.input :from_name, label: false, placeholder: 'Your Name', :input_html => {class: 'twelve'}
-        .six.columns
-          = f.input :from_email, label: false, placeholder: 'Your Email Address', :input_html => {class: 'twelve'}
-      .row
-        .six.columns
-          = f.input :to_name, label: false, placeholder: 'Their Name', :input_html => {class: 'twelve'}
-        .six.columns
-          = f.input :to_email, label: false, placeholder: 'Their Email Address', :input_html => {class: 'twelve'}
-      .row
-        .six.columns
-          = f.input :item, label: false, placeholder: 'The Borrowed Item', :input_html => {class: 'twelve'}
-          .clear
-          = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], '1m'), {}, {id: 'reminder_gap', class: 'twelve'}
-        .six.columns
-          = f.input :message, label: false, placeholder: 'Message For Friend', input_html: {rows: 3}
+    = semantic_form_for @reminder, html: {class: 'form custom'} do |f|
+      %fieldset
+        %legend Required
+        .row
+          .six.columns
+            = f.input :from_name, label: false, placeholder: 'Your Name', :input_html => {class: 'twelve'}
+          .six.columns
+            = f.input :from_email, label: false, placeholder: 'Your Email Address', :input_html => {class: 'twelve'}
+        .row
+          .six.columns
+            = f.input :to_name, label: false, placeholder: 'Their Name', :input_html => {class: 'twelve'}
+          .six.columns
+            = f.input :item, label: false, placeholder: 'The Borrowed Item', :input_html => {class: 'twelve'}
+        .row
+          .twelve.columns
+            = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], '1m'), {}, {id: 'customDropdown', class: 'twelve', style: "display:none;"}
+            .custom.dropdown
+              %a.current{href: '#'} Send in 1 month
+              %a.selector{href: '#'}
+              %ul
+      %fieldset
+        %legend Optional
+        .row
+          .six.columns
+            %label{for: 'reminder_to_email'} Send the reminder to them
+            = f.input :to_email, label: false, placeholder: 'Their Email Address', :input_html => {class: 'twelve'}
+          .six.columns
+            %label{for: 'reminder_message'} Add a personal Message
+            = f.input :message, label: false, placeholder: 'Message For Friend', input_html: {rows: 3}
       .row
         .twelve.columns
-          = f.submit "Save Reminder", class: 'button'
+          = f.submit "Save Reminder To Send Later", class: 'button twelve'
+          %h6.subheader We will never sell or spam these email addresses
   .six.columns
     .panel
       %p 
-        From: 
-        %span.your_email [Your Email Address]
+        %span.from
+        %span.to To: <b>[Your Email Address]</b>
         %br
-        To:
-        %span.their_email [Their  Email Address]
+        Subject: A quick reminder about
+        %span.your_my your
+        %span.item <b>[Borrowed Item]</b>
         %br
-        Subject: A quick reminder about my
-        %span.the_item [Borrowed Item]
-        %br
-        Send:
-        %span.sent [In 1 month]
+        %span.sent Send: <b>In 1 Month</b>
       %hr
       %p 
         Hi
-        %span.their_name [Their Name]
+        %span.name <b>[Your Name]</b>
       %p 
-        Just a quick reminder that you borrowed my
-        %span.the_item [Thingy]
-        recently and I'd like it back soon.
+        Just a quick reminder that 
+        %span.their_name <b>[Friend's Name]</b>
+        borrowed
+        %span.your_my your
+        %span.item <b>[Item]</b>
+        %span.recently recently.
       %p
-        %span.message [Your Personal Message]
+        %span.message <b>[Optional Message]</b>
       %p 
-        Ta,
-        %span.your_name [Your Name]
-      %p Sent via www.borrownote.com
+        %span.thanks
+      %p 
+        Sent via #{link_to 'www.borrownote.com', 'http://www.borrownote.com'}
+        %br
+        Friendly reminders to give your stuff back!
