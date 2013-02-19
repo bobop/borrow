@@ -1,6 +1,6 @@
 Hi <%= @reminder.to_name %>
 
-Just a quick reminder that you borrowed my <%= @reminder.item %> recently which like back soon.
+Just a quick reminder that you borrowed my <%= @reminder.item %> recently which I'd like back soon.
 <% if @reminder.message.present? %>
 
 <%= @reminder.message %>
