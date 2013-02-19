@@ -1,0 +1,15 @@
+Hi <%= @reminder.from_name %>
+
+Just a quick reminder that <%= @reminder.to_name %> borrowed your <%= @reminder.item %> recently.
+<% if @reminder.message.present? %>
+
+<%= @reminder.message %>
+<% end %>
+<% if @reminder.to_email.present? %>
+
+A reminder email has been sent to <%= @reminder.to_name %> too.
+<% end %>
+
+---
+
+Sent via [www.borrownote.com](http://www.borrownote.com/ "www.borrownote.com") - friendly reminders to give your stuff back!

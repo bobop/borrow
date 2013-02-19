@@ -8,6 +8,13 @@ class Reminder < ActiveRecord::Base
   validates :from_email, :email_format => {}
   validates :to_email, :email_format => {:allow_blank => true}
 
+  scope :to_send, where(:reminder_date => Date.today)
+
+  def send!
+    ReminderMailer.delay.remind_self(self)
+    ReminderMailer.delay.remind_them(self) if self.to_email.present?
+  end
+
   private
 
   def format_reminder_date

@@ -15,24 +15,28 @@
             = f.input :item, label: false, placeholder: 'The Borrowed Item', :input_html => {class: 'twelve'}
         .row
           .twelve.columns
-            = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], '1m'), {}, {id: 'customDropdown', class: 'twelve', style: "display:none;"}
+            = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], @reminder.reminder_gap.present? ? @reminder.reminder_gap : '1m'), {}, {id: 'customDropdown', class: 'twelve', style: "display:none;"}
             .custom.dropdown
-              %a.current{href: '#'} Send in 1 month
+              %a.current{href: '#'}
+                - if @reminder.reminder_gap.present?
+                  = selected_reminder_gap(@reminder)
+                - else
+                  Send in 1 month
               %a.selector{href: '#'}
               %ul
       %fieldset
         %legend Optional
         .row
           .six.columns
-            %label{for: 'reminder_to_email'} Send the reminder to them
-            = f.input :to_email, label: false, placeholder: 'Their Email Address', :input_html => {class: 'twelve'}
+            %label{for: 'reminder_message'} Add a personal Message:
+            = f.input :message, label: false, placeholder: 'Message', input_html: {rows: 3}
           .six.columns
-            %label{for: 'reminder_message'} Add a personal Message
-            = f.input :message, label: false, placeholder: 'Message For Friend', input_html: {rows: 3}
+            %label{for: 'reminder_to_email'} Send the reminder to them too:
+            = f.input :to_email, label: false, placeholder: 'Their Email Address', :input_html => {class: 'twelve'}
       .row
         .twelve.columns
           = f.submit "Save Reminder To Send Later", class: 'button twelve'
-          %h6.subheader We will never sell or spam these email addresses
+          %h6.subheader ** We will never sell or spam these email addresses **
   .six.columns
     .panel
       %p 
@@ -42,8 +46,8 @@
         Subject: A quick reminder about
         %span.your_my your
         %span.item <b>[Borrowed Item]</b>
-        %br
-        %span.sent Send: <b>In 1 Month</b>
+        / %br
+        / %span.sent Sent: In 1 month
       %hr
       %p 
         Hi
