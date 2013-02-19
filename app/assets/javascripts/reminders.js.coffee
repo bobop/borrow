@@ -8,9 +8,15 @@ jQuery ->
     $('input[id="reminder_from_name"]').bind 'keyup change', ->
       $('.name').html($(this).val())
     $('input[id="reminder_from_email"]').bind 'keyup change', ->
-      $('.to').html("To: <b>"+$(this).val()+"</b>")
+      if $('input[id="reminder_to_email"]').val().length > 0
+        $('.from').html("From: <b>"+$(this).val()+"</b><br/>")
+      else
+        $('.to').html("To: <b>"+$(this).val()+"</b>")
     $('input[id="reminder_to_name"]').bind 'keyup change', ->
-      $('.their_name').html("<b>"+$(this).val()+"</b>")
+      if $('input[id="reminder_to_email"]').val().length > 0
+        $('.their_name').html("you>")
+      else
+        $('.their_name').html("<b>"+$(this).val()+"</b>")
     $('input[id="reminder_item"]').bind 'keyup change', ->
       $('.item').html("<b>"+$(this).val()+"</b>")
       $('.subject').html("Subject: A quick reminder about your <b>"+$(this).val()+"</b>")
@@ -30,7 +36,7 @@ jQuery ->
       $('.your_my').html("my")
       $('.name').html("<b>"+$('input[id="reminder_to_name"]').val()+"</b>")
       $('.their_name').html("you")
-      $('.recently').html("recently and I'd like it back soon.")
+      $('.recently').html("recently which I'd like back soon.")
 
   reloadEmail = ->
     if $('input[id="reminder_from_name"]').val().length > 0
@@ -60,7 +66,7 @@ jQuery ->
       $('.your_my').html("my")
       $('.name').html("<b>"+$('input[id="reminder_to_name"]').val()+"</b>")
       $('.their_name').html("you")
-      $('.recently').html("recently and I'd like it back soon.")
+      $('.recently').html("recently which I'd like back soon.")
 
   alterEmail()
   reloadEmail()

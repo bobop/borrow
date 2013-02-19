@@ -6,7 +6,7 @@ class RemindersController < ApplicationController
   def create
     @reminder = Reminder.new(params[:reminder])
     if @reminder.save
-      ReminderMailer.reminder(@reminder).deliver if Rails.env.development?
+      ReminderMailer.remind_self(@reminder).deliver if Rails.env.development?
       redirect_to root_url, notice: 'Reminder stored successfully to send later'
     else
       render :new
