@@ -1,20 +1,20 @@
 .row
-  .six.columns
-    = semantic_form_for @reminder, html: {class: 'form custom'} do |f|
+  .small-12.large-6.columns
+    = simple_form_for @reminder, html: {class: 'form custom'} do |f|
       %fieldset
         %legend Required
         .row
-          .six.columns
-            = f.input :from_name, label: false, placeholder: 'Your Name', :input_html => {class: 'twelve'}
-          .six.columns
-            = f.input :from_email, label: false, placeholder: 'Your Email Address', :input_html => {class: 'twelve'}
+          .small-6.columns
+            = f.input :from_name, label: false, placeholder: 'Your Name'
+          .small-6.columns
+            = f.input :from_email, label: false, placeholder: 'Your Email Address'
         .row
-          .six.columns
-            = f.input :to_name, label: false, placeholder: 'Their Name', :input_html => {class: 'twelve'}
-          .six.columns
-            = f.input :item, label: false, placeholder: 'The Borrowed Item', :input_html => {class: 'twelve'}
+          .small-6.columns
+            = f.input :to_name, label: false, placeholder: 'Their Name'
+          .small-6.columns
+            = f.input :item, label: false, placeholder: 'The Borrowed Item'
         .row
-          .twelve.columns
+          .small-12.columns
             = f.select :reminder_gap, options_for_select([['Send in 1 week', '1w'],['Send in 1 month', '1m'],['Send in 2 months', '2m'],['Send in 3 months', '3m'],['Send in 6 months', '6m'],['Send in 1 year', '1y']], @reminder.reminder_gap.present? ? @reminder.reminder_gap : '1m'), {}, {id: 'customDropdown', class: 'twelve', style: "display:none;"}
             .custom.dropdown
               %a.current{href: '#'}
@@ -27,17 +27,17 @@
       %fieldset
         %legend Optional
         .row
-          .six.columns
+          .small-6.columns
             %label{for: 'reminder_message'} Add a personal Message:
-            = f.input :message, label: false, placeholder: 'Message', input_html: {rows: 3}
-          .six.columns
-            %label{for: 'reminder_to_email'} Send the reminder to them too:
-            = f.input :to_email, label: false, placeholder: 'Their Email Address', :input_html => {class: 'twelve'}
+            = f.input :message, label: false, placeholder: 'Message', input_html: {rows: 15}
+          .small-6.columns
+            %label{for: 'reminder_to_email'} Send a reminder to them too:
+            = f.input :to_email, label: false, placeholder: 'Their Email Address'
       .row
-        .twelve.columns
+        .small-12.columns
           = f.submit "Save Reminder To Send Later", class: 'button twelve'
           %h6.subheader ** We will never sell or spam these email addresses **
-  .six.columns
+  .small-12.large-6.columns
     .panel
       %p 
         %span.from

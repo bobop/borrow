@@ -9,7 +9,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'haml', '~> 3.1.7'
 gem 'haml-rails'
-gem 'formtastic'
+gem 'simple_form'
 gem "markerb", "~> 1.0.1"
 gem 'delayed_job_active_record'
 gem "workless", "~> 1.1.1"
@@ -27,9 +27,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'compass-rails'
-  gem 'zurb-foundation'
+  
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 group :development do

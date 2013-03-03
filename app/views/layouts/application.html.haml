@@ -15,30 +15,32 @@
   / Included CSS Files
   = stylesheet_link_tag "application"
 
-  / Included JS Files
-  = javascript_include_tag "application"
-
+  = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tags
 %body
   #container.row.centered
-    #header.twelve.columns
+    #header.small-12.columns
       %h1.light
         borrow<sub>note</sub>
-        %br
+      %h2.light
         %small friendly reminders to give your stuff back!
     %hr
-    #content.twelve_columns
+    #content.small-12.columns
       -if flash[:notice]
         .alert-box.center
           = flash[:notice]
       = yield
     %hr
     #footer.row
-      .one.columns
+      .small-1.columns
         &copy;
         = Time.now.year
-      .four.columns.offset-by-seven.right
+      .small-4.small-offset-7.columns.right
         = link_to "built by bobop", 'http://bobop.co.uk'
+  
+  / Included JS Files
+  = javascript_include_tag "application"
+
   :javascript
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-157020-35']);
