@@ -5,16 +5,17 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'jquery-rails'
+gem 'pg', '~> 0.14.1'
+gem 'jquery-rails', '~> 2.2.0'
 gem 'haml', '~> 3.1.7'
-gem 'haml-rails'
-gem 'simple_form'
+gem 'haml-rails', '~> 0.3.4'
+gem 'simple_form', '~> 2.0.2'
 gem "markerb", "~> 1.0.1"
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '~> 0.4.1'
 gem "workless", "~> 1.1.1"
 gem "mail_view", "~> 1.0.3"
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
+gem 'devise', '~> 2.2.3'
 
 
 # Gems used only for assets and not required

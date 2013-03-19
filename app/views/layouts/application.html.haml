@@ -26,9 +26,7 @@
         %small friendly reminders to give your stuff back!
     %hr
     #content.small-12.columns
-      -if flash[:notice]
-        .alert-box.center
-          = flash[:notice]
+      = render 'layouts/flashes'
       = yield
     %hr
     #footer.row

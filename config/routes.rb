@@ -1,5 +1,7 @@
 Borrow::Application.routes.draw do
   
+  devise_for :users
+
   resources :reminders
 
   if Rails.env.development?
