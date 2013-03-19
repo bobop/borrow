@@ -6,6 +6,7 @@ Borrow::Application.routes.draw do
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
+    mount_sextant
   end
 
   root :to => 'reminders#new'

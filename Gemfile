@@ -35,6 +35,7 @@ end
 group :development do
   gem "better_errors"
   gem 'quiet_assets'
+  gem 'sextant'
 end
 
 # To use ActiveModel has_secure_password

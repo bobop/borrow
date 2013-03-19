@@ -19,12 +19,7 @@
   = csrf_meta_tags
 %body
   #container.row.centered
-    #header.small-12.columns
-      %h1.light
-        borrow<sub>note</sub>
-      %h2.light
-        %small friendly reminders to give your stuff back!
-    %hr
+    = render 'layouts/header'
     #content.small-12.columns
       = render 'layouts/flashes'
       = yield
