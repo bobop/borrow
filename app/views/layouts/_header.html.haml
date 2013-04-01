@@ -5,7 +5,13 @@
     %h2.light
       %small friendly reminders to give your stuff back!
   .small-3.columns.account_buttons.right
-    = link_to "Sign Up", new_user_registration_path, class: 'button'
-    %br
-    = link_to "Log In", new_user_session_path, class: 'small secondary button'
+    - if user_signed_in?
+      Logged in as
+      = current_user.name
+      %br
+      = link_to "Log Out", destroy_user_session_path, method: :delete, class: 'small secondary button'
+    - else
+      = link_to "Sign Up", new_user_registration_path, class: 'button'
+      %br
+      = link_to "Log In", new_user_session_path, class: 'small secondary button'
 %hr

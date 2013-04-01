@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319192949) do
+ActiveRecord::Schema.define(:version => 20130401185024) do
+
+  create_table "borrows", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "borrower_name"
+    t.string   "borrower_email"
+    t.date     "reminder_date"
+    t.date     "returned_date"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "borrows", ["item_id"], :name => "index_borrows_on_item_id"
+  add_index "borrows", ["user_id"], :name => "index_borrows_on_user_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -28,6 +42,18 @@ ActiveRecord::Schema.define(:version => 20130319192949) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "items", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "description"
+    t.text     "notes"
+    t.string   "state"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
   create_table "reminders", :force => true do |t|
     t.string   "from_name"

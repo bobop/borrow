@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  item: 
+  borrower_name: MyString
+  borrower_email: MyString
+  reminder_date: 2013-04-01
+  returned_date: 2013-04-01
+
+two:
+  user: 
+  item: 
+  borrower_name: MyString
+  borrower_email: MyString
+  reminder_date: 2013-04-01
+  returned_date: 2013-04-01

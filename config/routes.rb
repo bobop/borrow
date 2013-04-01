@@ -1,8 +1,12 @@
-Borrow::Application.routes.draw do
+Borrownote::Application.routes.draw do
   
   devise_for :users
 
   resources :reminders
+
+  resources :items
+
+  resources :borrows
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'

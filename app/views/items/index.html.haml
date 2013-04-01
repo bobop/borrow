@@ -1,0 +1,17 @@
+%h1 My Items
+- if @items.any?
+  - @items.each do |i|
+    .panel.item
+      .row
+        .small-9.columns
+          %h4= i.name
+          %h4
+            %small= i.description
+        .small-3.columns.right
+          = link_to 'Edit', edit_item_path(i), class: 'small secondary button'
+          = link_to 'Add Borrow', '#', class: 'small button'
+  .row
+    .small-12.columns= link_to "Add a new Item", new_item_path, class: 'button'
+- else
+  %p You have no Items listed as borrowed in Borrow Note.
+  = render 'form'

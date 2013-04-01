@@ -16,6 +16,7 @@ gem "workless", "~> 1.1.1"
 gem "mail_view", "~> 1.0.3"
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'devise', '~> 2.2.3'
+gem 'state_machine'
 
 
 # Gems used only for assets and not required
