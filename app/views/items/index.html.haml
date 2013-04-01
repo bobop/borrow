@@ -3,13 +3,19 @@
   - @items.each do |i|
     .panel.item
       .row
-        .small-9.columns
+        .small-6.columns
           %h4= i.name
           %h4
             %small= i.description
-        .small-3.columns.right
+        .small-2.columns
+          - if i.state == 'in'
+            .alert-box.success At Home
+          - if i.out?
+            .alert-box.alert Borrowed
+        .small-4.columns.right
+          = link_to 'Add Borrow Details', '#', class: 'small button' if i.state == 'in'
+          = link_to 'Mark as Returned', '#', class: 'small button' if i.out?
           = link_to 'Edit', edit_item_path(i), class: 'small secondary button'
-          = link_to 'Add Borrow', '#', class: 'small button'
   .row
     .small-12.columns= link_to "Add a new Item", new_item_path, class: 'button'
 - else
