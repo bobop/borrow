@@ -4,13 +4,17 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def show
+    @item = current_user.items.find(params[:id])
+  end
+
   def new
-    @item = Item.new
+    @item = current_user.items.new
+    @borrow = Borrow.new
   end
 
   def create
-    @item = Item.new(params[:item])
-    @item.user_id = current_user.id
+    @item = current_user.items.new(params[:item])
     if @item.save
       redirect_to items_path
     else

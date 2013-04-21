@@ -1,0 +1,21 @@
+= simple_form_for @borrow do |f|
+  - if @item.present?
+    .row
+      .small-12.columns
+        %h3 Item: #{@item.name}
+        = f.input :item_id, as: :hidden, input_html: {value: @item.id}
+  - else
+    %fieldset
+      %legend Item Details
+      = f.simple_fields_for :item do |i|
+        .row
+          .small-6.columns= i.input :name, label: 'Item Name'
+          .small-6.columns= i.input :description, label: 'Short Description'
+  %fieldset
+    %legend Borrower Details
+    .row
+      .small-6.columns= f.input :borrower_name
+      .small-6.columns= f.input :borrower_email
+    .row
+      .small-12.columns= f.input :reminder_date
+  = f.submit 'Save Item', class: 'button'

@@ -1,0 +1,39 @@
+%h1 
+  = @item.name
+  %small= @item.description
+%hr
+%h3 Currently Borrowed by:
+- if @item.current_borrow.present?
+  .panel
+    .row
+      .small-9.columns
+        %h3
+          = @item.current_borrow.borrower_name
+          %small= @item.current_borrow.borrower_email
+      .small-3.columns
+        %p.dates
+          Since: #{@item.current_borrow.created_at.strftime("%d-%m-%Y")}
+          %br
+          Reminder Date: #{@item.current_borrow.reminder_date.strftime("%d-%m-%Y")}
+- else
+  .panel
+    %p Nobody, you've got it...right?!
+    %p= link_to 'Add Borrow Note', new_borrow_path(item_id: @item), class: 'small button'
+
+%h3 Borrow History:
+- if @item.borrows.historic.present?
+  - @item.borrows.historic.each do |b|
+    .panel
+      .row
+        .small-9.columns
+          %h3
+            = b.borrower_name
+            %small= b.borrower_email
+        .small-3.columns
+          %p.dates
+            From: #{b.created_at.strftime("%d-%m-%Y")}
+            %br
+            To: #{b.returned_date.strftime("%d-%m-%Y")}
+- else
+  .panel
+    %p No-one has ever borrowed and returned this. You might need to do some lending or chasing up!

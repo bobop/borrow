@@ -1,5 +1,11 @@
 Borrownote::Application.routes.draw do
   
+  get "borrows/index"
+
+  get "borrows/new"
+
+  get "borrows/edit"
+
   devise_for :users
 
   resources :reminders

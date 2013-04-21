@@ -1,21 +1,27 @@
-%h1 My Items
+.row
+  .small-6.columns
+    %h1 My Items
+  .small-6.columns.right
+    = link_to 'Add a Borrowed Item', new_borrow_path, class: 'button'
 - if @items.any?
   - @items.each do |i|
     .panel.item
       .row
-        .small-6.columns
-          %h4= i.name
+        .small-8.columns
           %h4
+            = link_to i.name, item_path(i)
             %small= i.description
-        .small-2.columns
           - if i.state == 'in'
             .alert-box.success At Home
           - if i.out?
-            .alert-box.alert Borrowed
-        .small-4.columns.right
-          = link_to 'Add Borrow Details', '#', class: 'small button' if i.state == 'in'
-          = link_to 'Mark as Returned', '#', class: 'small button' if i.out?
-          = link_to 'Edit', edit_item_path(i), class: 'small secondary button'
+            .alert-box.alert Borrowed by #{i.current_borrow.borrower_name}
+        .small-4.columns
+          %ul.button-group.right
+            - if i.state == 'in'
+              %li= link_to 'Add Borrow Note', new_borrow_path(item_id: i), class: 'small button'
+            - elsif i.out?
+              %li= link_to 'Mark as Returned', edit_borrow_path(i.current_borrow), class: 'small button'
+            %li= link_to 'Edit', edit_item_path(i), class: 'small secondary button'
   .row
     .small-12.columns= link_to "Add a new Item", new_item_path, class: 'button'
 - else

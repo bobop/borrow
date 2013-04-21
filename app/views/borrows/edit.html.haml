@@ -1,0 +1,5 @@
+%h1 Mark Item as Returned
+%h3 Item: #{@borrow.item.name}
+= simple_form_for @borrow do |f|
+  = f.input :returned_date
+  = f.submit 'Mark as Returned', class: 'button'
